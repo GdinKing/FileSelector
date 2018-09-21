@@ -5,6 +5,12 @@
 ```groovy
  implementation 'com.king.ui:fileselector:1.0.0'
 ```
+## 特点
+
+- 支持单选/多选
+- 适配6.0权限申请
+- 支持传入初始文件夹路径
+- 支持筛选文件类型
 
 ## 用法：
 
@@ -13,7 +19,7 @@
 ```java
   Intent intent = new Intent(this, FileSelectorActivity.class);
   intent.putExtra(FileSelectorActivity.ACTIVITY_KEY_MULTI, true);  //是否多选模式
-  intent.putExtra(FileSelectorActivity.ACTIVITY_KEY_MAX_COUNT, 3);//限定文件选择数
+  intent.putExtra(FileSelectorActivity.ACTIVITY_KEY_MAX_COUNT, 5);//限定文件选择数，默认为3
   intent.putExtra(FileSelectorActivity.ACTIVITY_KEY_FILEROOT, ""); //初始路径
   intent.putExtra(FileSelectorActivity.ACTIVITY_KEY_FILE_TYPE, ""); //筛选文件类型
 //intent.putExtra(FileSelectorActivity.ACTIVITY_KEY_FILE_TYPE, FileSelectorActivity.FILE_TYPE_IMAGE);//只展示图片
