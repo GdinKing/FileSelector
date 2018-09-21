@@ -35,7 +35,7 @@ import java.util.List;
 
 
 /**
- * 文件浏览/选择
+ * File Selector
  *
  * @author king
  * @since 2017/11/3
@@ -60,7 +60,7 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
     private HorizontalScrollView scrollView;
 
     /**
-     * 文件类型
+     * file type
      */
     public static final String FILE_TYPE_IMAGE = "image";
     public static final String FILE_TYPE_VIDEO = "video";
@@ -68,16 +68,14 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
     public static final String FILE_TYPE_AUDIO = "audio";
 
     /**
-     * 最大选择数
+     * max select
      */
     private int maxSelect;
     /**
-     * 筛选的文件类型
+     * file type filter list
      */
     private List<String> filterList;
-    /**
-     * 是否多选模式
-     */
+
     private boolean isMultiSelect = false;
 
 
@@ -104,9 +102,6 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
         initData();
     }
 
-    /**
-     * 初始化数据
-     */
     private void initData() {
 
         isMultiSelect = getIntent().getBooleanExtra(ACTIVITY_KEY_MULTI, false);
@@ -144,7 +139,7 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
     }
 
     /**
-     * 初始化文件层级导航视图
+     * show top guide view
      *
      * @param parent
      */
@@ -159,7 +154,7 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
     }
 
     /**
-     * 获取需要过滤的文件类型
+     * get file type filter
      *
      * @param typeStr
      * @return
@@ -183,9 +178,9 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
 
 
     /**
-     * 获取file下的文件列表
+     * get file list from @file
      *
-     * @param file 当前文件夹
+     * @param file current file
      */
     private List<File> getFileList(File file) {
         List<File> fileList = new ArrayList<>();
@@ -227,7 +222,7 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
     }
 
     /**
-     * 文件排序
+     * sort file
      *
      * @param list
      * @return
@@ -245,9 +240,6 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
         return list;
     }
 
-    /**
-     * Item点击
-     */
     private OnItemClickListener itemClickListener = new OnItemClickListener() {
 
         @Override
@@ -278,7 +270,7 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
     };
 
     /**
-     * 添加顶部导航视图
+     * add guide view
      *
      * @param f
      */
@@ -383,7 +375,6 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {//获得了权限
                 initData();
             } else {
-                Toast.makeText(this, "没有读取存储权限", Toast.LENGTH_SHORT).show();
                 finish();
             }
         }

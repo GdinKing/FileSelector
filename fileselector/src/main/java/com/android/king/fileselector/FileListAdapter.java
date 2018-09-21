@@ -22,7 +22,7 @@ import java.util.List;
 
 
 /**
- * 文件选择列表Adapter
+ * file list adapter
  *
  * @since 2017/11/3
  * @author king
@@ -30,20 +30,13 @@ import java.util.List;
 public class FileListAdapter extends BaseAdapter {
 
     private Context context;
-    /**
-     * 数据源
-     */
     private List<File> files;
 
     /**
-     * 是否多选
+     * 是否多选模式
      */
     private boolean isMultiSelect;
 
-    /**
-     * 是否选择目录
-     */
-    private boolean isSelectDir = false;
 
     /**
      * 最大选择数
@@ -51,7 +44,7 @@ public class FileListAdapter extends BaseAdapter {
     private int maxSelects = 3;
 
     /**
-     * 选中的文件集合
+     *选中文件列表
      */
     private ArrayList<File> selectList = new ArrayList<>();
 
@@ -106,7 +99,6 @@ public class FileListAdapter extends BaseAdapter {
             viewHolder.tv2.setVisibility(View.GONE);
             viewHolder.icon_image.setVisibility(View.VISIBLE);
             viewHolder.icon_text.setVisibility(View.GONE);
-            viewHolder.iv_check.setVisibility(isSelectDir? View.VISIBLE: View.GONE);
         } else {  //文件
             String text = FileUtil.getSuffix(file.getName());
             if (TextUtils.isEmpty(text)) {
@@ -142,7 +134,7 @@ public class FileListAdapter extends BaseAdapter {
     }
 
     /**
-     * 格式化文件创建时间
+     * 格式化文件时间
      *
      * @param time
      * @return
@@ -172,7 +164,7 @@ public class FileListAdapter extends BaseAdapter {
     }
 
     /**
-     * 添加文件
+     * 添加file
      *
      * @param selectFile
      */
@@ -188,7 +180,7 @@ public class FileListAdapter extends BaseAdapter {
     }
 
     /**
-     * 移除选中文件
+     * 移除选中file
      *
      * @param file
      */
@@ -207,10 +199,7 @@ public class FileListAdapter extends BaseAdapter {
         this.maxSelects = maxSelects;
     }
 
-    /**
-     * 刷新数据
-     * @param fileList
-     */
+
     public void refreshData(List<File> fileList) {
         this.files = fileList;
         notifyDataSetChanged();

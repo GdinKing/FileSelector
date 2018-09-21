@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.novoda.bintray-release'  //添加
 
 android {
     compileSdkVersion 27
@@ -39,98 +38,11 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
 
-//项目主页
-def siteUrl = 'https://github.com/GdinKing/FileSelector'
-//项目的版本控制地址
-def gitUrl = 'https://github.com/GdinKing/FileSelector.git'
-
-//发布到组织名称名字，必须填写
-group = "com.android.king.ui"
-//发布到JCenter上的项目名字，必须填写
-def libName = "FileSelector"
-// 版本号，下次更新是只需要更改版本号即可
-version = "1.0"
-
-//生成源文件
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-//生成文档
-//task javadoc(type: Javadoc) {
-//    source = android.sourceSets.main.java.srcDirs
-//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-//    options.encoding "UTF-8"
-//    options.charSet 'UTF-8'
-//    options.author true
-//    options.version true
-//    options.links "https://github.com/GdinKing/FileSelector/tree/master/docs/javadoc"
-//    failOnError false
-//}
-
-//文档打包成jar
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-//拷贝javadoc文件
-task copyDoc(type: Copy) {
-    from "${buildDir}/docs/"
-    into "docs"
-}
-
-//上传到jcenter所需要的源码文件
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
-
-// 配置maven库，生成POM.xml文件
-install {
-    repositories.mavenInstaller {
-        // This generates POM.xml with proper parameters
-        pom {
-            project {
-                packaging 'aar'
-                name 'android file selector'
-                url siteUrl
-                licenses {
-                    license {
-                        name 'This is an android file selector'
-                        url 'https://github.com/GdinKing/FileSelector'
-                    }
-                }
-                developers {
-                    developer {
-                        id 'gdinking'
-                        name 'king'
-                        email '976679629@qq.com'
-                    }
-                }
-                scm {
-                    connection gitUrl
-                    developerConnection gitUrl
-                    url siteUrl
-                }
-            }
-        }
-    }
-}
-
-//上传到jcenter
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-bintray {
-    user = properties.getProperty("bintray.user")    //读取 local.properties 文件里面的 bintray.user
-    key = properties.getProperty("bintray.apikey")   //读取 local.properties 文件里面的 bintray.apikey
-    configurations = ['archives']
-    pkg {
-        repo = "maven"
-        name = libName    //发布到JCenter上的项目名字，必须填写
-        desc = 'This is an android file selector'    //项目描述
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        licenses = ["Apache-2.0"]
-        publish = true
-    }
+publish {
+    userOrg = 'mdking'//bintray.com用户名
+    groupId = 'com.king.ui'//jcenter上的路径
+    artifactId = 'fileselector'//项目名称
+    publishVersion = '1.0.0'//版本号
+    desc = 'This is an android file selector'//描述，不重要
+    website = 'https://github.com/GdinKing/FileSelector'//网站，不重要
 }
