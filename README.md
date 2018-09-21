@@ -26,13 +26,10 @@
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK && requestCode == 100 && data != null) {
-            try {
-                ArrayList<String> pathList = data.getStringArrayListExtra(FileSelectorActivity.ACTIVITY_KEY_RESULT_PATHLIST);
-                for (String path : pathList) {
-                    Log.i(TAG, path);
-                }
-            } catch (Exception e) {
-            }
+             ArrayList<String> pathList = data.getStringArrayListExtra(FileSelectorActivity.ACTIVITY_KEY_RESULT_PATHLIST);
+             for (String path : pathList) {
+                 Log.i(TAG, path);
+             }
         }
     }
 ```
