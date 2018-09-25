@@ -5,6 +5,11 @@
 ```groovy
  implementation 'com.king.ui:fileselector:1.0.0'
 ```
+## 编译环境要求
+
+ compileSdkVersion：27+
+ jdk 1.8+
+
 ## 特点
 
 - 支持单选/多选
