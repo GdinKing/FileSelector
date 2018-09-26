@@ -13,4 +13,10 @@
         android:onClick="selectFile"
         android:text="选择文件"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/tv_result"/>
+
 </LinearLayout>

@@ -342,7 +342,7 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
                 }
                 ArrayList<String> array = new ArrayList<>();
                 for (File file : listAdapter.getSelectList()) {
-                    array.add("file://" + file.getAbsolutePath());
+                    array.add(file.getAbsolutePath());
                 }
                 Intent intent = new Intent();
                 intent.putExtra(ACTIVITY_KEY_RESULT_PATHLIST, array);

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.android.king.fileselector.FileSelectorActivity;
 
@@ -15,10 +16,13 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "king";
 
+    private TextView tvResult;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tvResult = findViewById(R.id.tv_result);
     }
 
 
@@ -47,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 for (String path : pathList) {
                     Log.i(TAG, path);
                 }
+                tvResult.setText(pathList.toString());
             } catch (Exception e) {
             }
         }
