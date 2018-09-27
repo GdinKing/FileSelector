@@ -37,7 +37,7 @@ publish {
     userOrg = 'mdking'
     groupId = 'com.king.ui'
     artifactId = 'fileselector'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.1'
     desc = 'This is an android file selector'
     website = 'https://github.com/GdinKing/FileSelector'
 }
