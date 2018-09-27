@@ -28,9 +28,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -85,8 +87,8 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_file_selector);
 
         mEmptyView = findViewById(R.id.tv_empty);
-        mRightText = findViewById(R.id.right_tv);
-        mBackImgBtn = findViewById(R.id.back_img_btn);
+        mRightText = findViewById(R.id.tv_right);
+        mBackImgBtn = findViewById(R.id.btn_back_img);
         mBackImgBtn.setVisibility(View.VISIBLE);
         mBackImgBtn.setOnClickListener(this);
 
@@ -129,7 +131,7 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
         if (isMultiSelect) {
             mRightText.setVisibility(View.VISIBLE);
             mRightText.setOnClickListener(this);
-            mRightText.setText("确定(" + listAdapter.getSelectList().size() + ")");
+            mRightText.setText(getString(R.string.file_select_ok) + "(" + listAdapter.getSelectList().size() + ")");
         } else {
             mRightText.setVisibility(View.GONE);
         }
@@ -184,36 +186,39 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
      */
     private List<File> getFileList(File file) {
         List<File> fileList = new ArrayList<>();
-        File[] files = file.listFiles(f -> {
-            if (!f.canRead() || f.isHidden()) {
-                return false;
-            }
-            if (f.isDirectory()) {
-                return true;
-            } else if (filterList != null && filterList.size() > 0) {//过滤条件
-                String name = f.getName();
-                boolean result = false;
-                for (String type : filterList) {
-                    if (FILE_TYPE_IMAGE.equals(type) && FileUtil.isImage(name)) {
-                        result = true;
-                        break;
-                    } else if (FILE_TYPE_VIDEO.equals(type) && FileUtil.isVideo(name)) {
-                        result = true;
-                        break;
-                    } else if (FILE_TYPE_DOC.equals(type) && FileUtil.isDoc(name)) {
-                        result = true;
-                        break;
-                    } else if (FILE_TYPE_AUDIO.equals(type) && FileUtil.isAudio(name)) {
-                        result = true;
-                        break;
-                    } else if (name.endsWith("." + type)) {
-                        result = true;
-                        break;
-                    }
+        File[] files = file.listFiles(new FileFilter() {
+            @Override
+            public boolean accept(File f) {
+                if (!f.canRead() || f.isHidden()) {
+                    return false;
                 }
-                return result;
+                if (f.isDirectory()) {
+                    return true;
+                } else if (filterList != null && filterList.size() > 0) {//过滤条件
+                    String name = f.getName();
+                    boolean result = false;
+                    for (String type : filterList) {
+                        if (FILE_TYPE_IMAGE.equals(type) && FileUtil.isImage(name)) {
+                            result = true;
+                            break;
+                        } else if (FILE_TYPE_VIDEO.equals(type) && FileUtil.isVideo(name)) {
+                            result = true;
+                            break;
+                        } else if (FILE_TYPE_DOC.equals(type) && FileUtil.isDoc(name)) {
+                            result = true;
+                            break;
+                        } else if (FILE_TYPE_AUDIO.equals(type) && FileUtil.isAudio(name)) {
+                            result = true;
+                            break;
+                        } else if (name.endsWith("." + type)) {
+                            result = true;
+                            break;
+                        }
+                    }
+                    return result;
+                }
+                return f.getName().trim().length() != 0;
             }
-            return f.getName().trim().length() != 0;
         });
         if (files != null) {
             fileList = Arrays.asList(files);
@@ -228,14 +233,17 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
      * @return
      */
     private List<File> sortFiles(List<File> list) {
-        Collections.sort(list, (file, newFile) -> {
-            if (file.isDirectory() && newFile.isFile()) {
-                return -1;
+        Collections.sort(list, new Comparator<File>() {
+            @Override
+            public int compare(File file, File newFile) {
+                if (file.isDirectory() && newFile.isFile()) {
+                    return -1;
+                }
+                if (file.isFile() && newFile.isDirectory()) {
+                    return 1;
+                }
+                return file.getName().toLowerCase().compareTo(newFile.getName().toLowerCase());
             }
-            if (file.isFile() && newFile.isDirectory()) {
-                return 1;
-            }
-            return file.getName().toLowerCase().compareTo(newFile.getName().toLowerCase());
         });
         return list;
     }
@@ -255,7 +263,7 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
                 } else {
                     listAdapter.addSelect(f);
                 }
-                mRightText.setText("确定(" + listAdapter.getSelectList().size() + ")");
+                mRightText.setText(getString(R.string.file_select_ok) + "(" + listAdapter.getSelectList().size() + ")");
             } else {
 
                 ArrayList<String> array = new ArrayList<>();
@@ -281,7 +289,7 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
 
         TextView tvMain = new TextView(this);
         if (f.getAbsolutePath().equals(Environment.getExternalStorageDirectory().getAbsolutePath())) {
-            tvMain.setText("存储");
+            tvMain.setText(getString(R.string.file_select_storage));
         } else {
             tvMain.setText(f.getName());
         }
@@ -292,19 +300,22 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
         tvMain.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_right, 0);
         tvMain.setPadding(0, 20, 5, 20);
 
-        tvMain.setOnClickListener((view) -> {
-            String filePath = (String) view.getTag();
-            File file = new File(filePath);
-            for (int i = 0; i < layoutGuide.getChildCount(); i++) {
-                View tv = layoutGuide.getChildAt(i);
-                if (filePath.equals(tv.getTag())) {
-                    if (i + 1 == layoutGuide.getChildCount()) {
-                        continue;
+        tvMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String filePath = (String) v.getTag();
+                File file = new File(filePath);
+                for (int i = 0; i < layoutGuide.getChildCount(); i++) {
+                    View tv = layoutGuide.getChildAt(i);
+                    if (filePath.equals(tv.getTag())) {
+                        if (i + 1 == layoutGuide.getChildCount()) {
+                            continue;
+                        }
+                        layoutGuide.removeViews(i + 1, layoutGuide.getChildCount() - i - 1);
                     }
-                    layoutGuide.removeViews(i + 1, layoutGuide.getChildCount() - i - 1);
                 }
+                showFiles(file);
             }
-            showFiles(file);
         });
 
         layoutGuide.addView(tvMain);
@@ -331,13 +342,13 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        if (i == R.id.back_img_btn) {
+        if (i == R.id.btn_back_img) {
             setResult(Activity.RESULT_CANCELED);
             finish();
-        } else if (i == R.id.right_tv) {
+        } else if (i == R.id.tv_right) {
             try {
                 if (listAdapter.getSelectList().size() == 0) {
-                    Toast.makeText(this, "没有选择任何文件", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.file_select_no_select), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 ArrayList<String> array = new ArrayList<>();
@@ -349,7 +360,7 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
                 setResult(Activity.RESULT_OK, intent);
                 finish();
             } catch (Exception e) {
-                Toast.makeText(this, "获取文件信息出错", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.file_select_error_tips), Toast.LENGTH_SHORT).show();
                 finish();
             }
         }
@@ -372,7 +383,7 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == 100) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {//获得了权限
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {//permission ok
                 initData();
             } else {
                 finish();

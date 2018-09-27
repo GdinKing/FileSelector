@@ -34,17 +34,22 @@ public class FileListAdapter extends BaseAdapter {
 
     /**
      * 是否多选模式
+     * Is multi select mode
      */
     private boolean isMultiSelect;
 
 
     /**
      * 最大选择数
+     *
+     * Max select count
      */
     private int maxSelects = 3;
 
     /**
      *选中文件列表
+     *
+     * Selected file list
      */
     private ArrayList<File> selectList = new ArrayList<>();
 
@@ -135,6 +140,7 @@ public class FileListAdapter extends BaseAdapter {
 
     /**
      * 格式化文件时间
+     * format the time
      *
      * @param time
      * @return
@@ -165,12 +171,13 @@ public class FileListAdapter extends BaseAdapter {
 
     /**
      * 添加file
+     * add file
      *
      * @param selectFile
      */
     public void addSelect(File selectFile) {
         if (selectList.size() >= maxSelects) {
-            Toast.makeText(context, "最多选择" + maxSelects + "个文件", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getString(R.string.file_select_max_select,maxSelects), Toast.LENGTH_SHORT).show();
             return;
         }
         if (!selectList.contains(selectFile)) {
@@ -181,6 +188,7 @@ public class FileListAdapter extends BaseAdapter {
 
     /**
      * 移除选中file
+     * remove selected file
      *
      * @param file
      */

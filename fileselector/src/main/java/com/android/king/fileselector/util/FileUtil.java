@@ -71,6 +71,7 @@ public class FileUtil {
 
     /**
      * 判断是否是图片类型
+     *  Is image
      *
      * @param name
      * @return
@@ -91,6 +92,7 @@ public class FileUtil {
 
     /**
      * 判断是否是视频类型
+     * Is video
      *
      * @param name
      * @return
@@ -111,7 +113,7 @@ public class FileUtil {
 
     /**
      * 判断是否文档类型
-     *
+     * Is document
      * @param name
      * @return
      */
@@ -131,7 +133,7 @@ public class FileUtil {
 
     /**
      * 判断是否是音频类型
-     *
+     * Is audio
      * @param name
      * @return
      */
@@ -150,6 +152,7 @@ public class FileUtil {
     }
     /**
      * 获取文件扩展名
+     * Get the suffix of the file
      *
      * @param fileName
      * @return

@@ -53,9 +53,9 @@
 
     <ImageView
         android:id="@+id/iv_check"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:padding="15dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_margin="15dp"
         android:visibility="gone"
         android:src="@drawable/icon_uncheck" />
 

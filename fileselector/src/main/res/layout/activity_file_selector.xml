@@ -12,7 +12,7 @@
         android:background="@android:color/white">
 
         <TextView
-            android:id="@+id/back_img_btn"
+            android:id="@+id/btn_back_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -21,13 +21,13 @@
             android:gravity="center"
             android:minWidth="45dp"
             android:paddingLeft="5dp"
-            android:text="返回"
+            android:text="@string/file_select_cancel"
             android:textColor="@color/file_blue"
             android:textSize="16sp"/>
 
 
         <TextView
-            android:id="@+id/title_tv"
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -35,13 +35,13 @@
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="1"
-            android:text="选择文件"
+            android:text="@string/file_select_title"
             android:textColor="@color/file_blue"
             android:textSize="18sp" />
 
 
         <TextView
-            android:id="@+id/right_tv"
+            android:id="@+id/tv_right"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
@@ -49,7 +49,7 @@
             android:layout_marginRight="10dp"
             android:clickable="true"
             android:gravity="center_vertical"
-            android:text="确定"
+            android:text="@string/file_select_ok"
             android:textColor="@color/file_blue"
             android:textSize="16sp"
             android:visibility="gone" />

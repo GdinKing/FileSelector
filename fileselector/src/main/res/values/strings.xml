@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">FileSelector</string>
+    <string name="file_select_title">选择文件</string>
+    <string name="file_select_ok">确定</string>
+    <string name="file_select_cancel">取消</string>
+    <string name="file_select_storage">存储</string>
+    <string name="file_select_error_tips">获取文件信息出错</string>
+    <string name="file_select_no_select">没有选择任何文件</string>
+    <string name="file_select_max_select">最多选择%d个文件</string>
+
+
 </resources>

@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /***
- * 文件图标生成工具
+ * 文件图标生成工具 File icon generator
  *
  * @since 2017/12/28
  * @author king

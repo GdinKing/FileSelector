@@ -22,11 +22,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    compileOptions {
-        targetCompatibility 1.8
-        sourceCompatibility 1.8
-    }
 }
 
 dependencies {
@@ -39,10 +34,10 @@ dependencies {
 }
 
 publish {
-    userOrg = 'mdking'//bintray.com用户名
-    groupId = 'com.king.ui'//jcenter上的路径
-    artifactId = 'fileselector'//项目名称
-    publishVersion = '1.0.0'//版本号
-    desc = 'This is an android file selector'//描述，不重要
-    website = 'https://github.com/GdinKing/FileSelector'//网站，不重要
+    userOrg = 'mdking'
+    groupId = 'com.king.ui'
+    artifactId = 'fileselector'
+    publishVersion = '1.0.0'
+    desc = 'This is an android file selector'
+    website = 'https://github.com/GdinKing/FileSelector'
 }
