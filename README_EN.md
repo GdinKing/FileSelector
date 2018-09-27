@@ -7,7 +7,7 @@
 ## Add to your project
 
 ```groovy
- implementation 'com.king.ui:fileselector:1.0.0'
+ implementation 'com.king.ui:fileselector:1.0.1'
 ```
 ## Compile Environment
 
