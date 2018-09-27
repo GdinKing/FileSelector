@@ -2,7 +2,7 @@
 
 ## 预览
 
-!()[preview.gif]
+![](preview.gif)
 
 ## 引入
 
