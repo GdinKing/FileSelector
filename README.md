@@ -2,7 +2,7 @@
 
 ## 预览
 
-<img src='preview.gif' width='300' height='600'/>
+<img src='preview.gif' width='300' height='520'/>
 
 ## 引入
 
