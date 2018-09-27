@@ -12,8 +12,6 @@
 ## Compile Environment
 
  compileSdkVersion：27+
- 
- jdk 1.8+
 
 ## Function
 
