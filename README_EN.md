@@ -11,7 +11,7 @@
 ```
 ## Compile Environment
 
- compileSdkVersion：27+
+ compileSdkVersion：27
 
 ## Function
 
