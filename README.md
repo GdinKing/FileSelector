@@ -12,9 +12,8 @@ An Android file selector,see [English Document](https://github.com/GdinKing/File
 ```
 ## 编译环境要求
 
- compileSdkVersion：27+
- 
- jdk 1.8+
+ compileSdkVersion：27
+
 
 ## 特点
 
