@@ -1,4 +1,5 @@
 # 安卓文件选择器
+An Android file selector,see [English Document](https://github.com/GdinKing/FileSelector/blob/master/README_EN.md)
 
 ## 预览
 
@@ -7,7 +8,7 @@
 ## 引入
 
 ```groovy
- implementation 'com.king.ui:fileselector:1.0.0'
+ implementation 'com.king.ui:fileselector:1.0.1'
 ```
 ## 编译环境要求
 
