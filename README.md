@@ -8,7 +8,7 @@ An Android file selector,see [English Document](https://github.com/GdinKing/File
 ## 引入
 
 ```groovy
- implementation 'com.king.ui:fileselector:1.0.0'
+ implementation 'com.king.ui:fileselector:1.0.1'
 ```
 ## 编译环境要求
 
