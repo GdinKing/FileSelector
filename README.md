@@ -2,7 +2,7 @@
 
 ## 预览
 
-![](preview.gif =300x450)
+<img src='preview.gif' width='300' height='445'/>
 
 ## 引入
 
