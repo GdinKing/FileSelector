@@ -1,5 +1,5 @@
+中文 | [English](https://github.com/GdinKing/FileSelector/blob/master/README_EN.md)
 # 安卓文件选择器
-An Android file selector,see [English Document](https://github.com/GdinKing/FileSelector/blob/master/README_EN.md)
 
 ## 预览
 
