@@ -13,12 +13,12 @@
 
  compileSdkVersion：27
 
-## Function
+## Feature
 
-- Support single/multi select
-- Compatible for 6.0 permission request
-- Support init file path
-- Support file type filter
+- Single/Multiple selection
+- 6.0 permission grant
+- Init file path
+- File type filter
 
 ## Usage
 
@@ -26,8 +26,8 @@
 
 ```java
   Intent intent = new Intent(this, FileSelectorActivity.class);
-  intent.putExtra(FileSelectorActivity.ACTIVITY_KEY_MULTI, true);  //is multi select?
-  intent.putExtra(FileSelectorActivity.ACTIVITY_KEY_MAX_COUNT, 5);//max select,default is 3
+  intent.putExtra(FileSelectorActivity.ACTIVITY_KEY_MULTI, true);  //is multiple selection?
+  intent.putExtra(FileSelectorActivity.ACTIVITY_KEY_MAX_COUNT, 5);//max selection,default is 3
   intent.putExtra(FileSelectorActivity.ACTIVITY_KEY_FILEROOT, ""); //init path
   intent.putExtra(FileSelectorActivity.ACTIVITY_KEY_FILE_TYPE, ""); //file type filter
 //intent.putExtra(FileSelectorActivity.ACTIVITY_KEY_FILE_TYPE, FileSelectorActivity.FILE_TYPE_IMAGE);//only show image
