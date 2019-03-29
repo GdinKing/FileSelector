@@ -9,11 +9,8 @@
 ```groovy
  implementation 'com.king.ui:fileselector:1.0.1'
 ```
-## Compile Environment
 
- compileSdkVersion：27
-
-## Feature
+## Features
 
 - Single/Multiple selection
 - 6.0 permission grant
