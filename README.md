@@ -10,10 +10,6 @@
 ```groovy
  implementation 'com.king.ui:fileselector:1.0.1'
 ```
-## 编译环境要求
-
- compileSdkVersion：27
-
 
 ## 特点
 
