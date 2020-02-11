@@ -26,7 +26,7 @@
   intent.putExtra(FileSelectorActivity.ACTIVITY_KEY_MULTI, true);  //is multiple selection?
   intent.putExtra(FileSelectorActivity.ACTIVITY_KEY_MAX_COUNT, 5);//max selection,default is 3
   intent.putExtra(FileSelectorActivity.ACTIVITY_KEY_FILEROOT, ""); //init path
-  intent.putExtra(FileSelectorActivity.ACTIVITY_KEY_FILE_TYPE, ""); //file type filter
+  intent.putExtra(FileSelectorActivity.ACTIVITY_KEY_FILE_TYPE, ""); //file type filter，Array，eg:"["video","image","doc"]" or "[FileSelectorActivity.FILE_TYPE_IMAGE,FileSelectorActivity.FILE_TYPE_VIDEO]"
 //intent.putExtra(FileSelectorActivity.ACTIVITY_KEY_FILE_TYPE, FileSelectorActivity.FILE_TYPE_IMAGE);//only show image
   startActivityForResult(intent, 100);
 ```
