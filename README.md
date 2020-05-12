@@ -7,7 +7,7 @@
 
 ## 引入
 
-AppCompat版本：
+AppCompat版本：(建议升级AndroidX，以后AppCompat不再维护)
 ```groovy
  implementation 'com.king.ui:fileselector:1.0.1'
 ```
