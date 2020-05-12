@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.0.2"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -36,7 +36,7 @@ publish {
     userOrg = 'mdking'
     groupId = 'com.king.ui'
     artifactId = 'fileselector'
-    publishVersion = '2.0.0'
+    publishVersion = '1.0.2'
     desc = 'This is an android file selector'
     website = 'https://github.com/GdinKing/FileSelector'
 }

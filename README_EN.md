@@ -6,8 +6,13 @@
 
 ## Add to your project
 
+AppCompat：
 ```groovy
  implementation 'com.king.ui:fileselector:1.0.1'
+```
+AndroidX：
+```groovy
+ implementation 'com.king.ui:fileselector:1.0.2'
 ```
 
 ## Features

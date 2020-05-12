@@ -7,8 +7,13 @@
 
 ## 引入
 
+AppCompat版本：
 ```groovy
  implementation 'com.king.ui:fileselector:1.0.1'
+```
+AndroidX版本：
+```groovy
+ implementation 'com.king.ui:fileselector:1.0.2'
 ```
 
 ## 特点
