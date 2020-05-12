@@ -108,10 +108,9 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
     private void initData() {
 
         isMultiSelect = getIntent().getBooleanExtra(ACTIVITY_KEY_MULTI, false);
-        String fileType = getIntent().getStringExtra(ACTIVITY_KEY_FILE_TYPE);
+        filterList = getIntent().getStringArrayListExtra(ACTIVITY_KEY_FILE_TYPE);
         String filePath = getIntent().getStringExtra(ACTIVITY_KEY_FILEROOT);
-        maxSelect = getIntent().getIntExtra(ACTIVITY_KEY_MAX_COUNT, 3);
-        filterList = getFilterType(fileType);
+        maxSelect = getIntent().getIntExtra(ACTIVITY_KEY_MAX_COUNT, 1);
 
         if (filePath == null || filePath.trim().length() == 0) {
             currentDir = Environment.getExternalStorageDirectory();
@@ -155,30 +154,6 @@ public class FileSelectorActivity extends AppCompatActivity implements View.OnCl
             addGuideView(parent);
         }
     }
-
-    /**
-     * get file type filter
-     *
-     * @param typeStr
-     * @return
-     */
-    private List<String> getFilterType(String typeStr) {
-        if (TextUtils.isEmpty(typeStr)) {
-            return null;
-        }
-        List<String> typeList = new ArrayList<>();
-        try {
-            JSONArray array = new JSONArray(typeStr);
-
-            for (int i = 0; i < array.length(); i++) {
-                typeList.add(array.getString(i));
-            }
-        } catch (JSONException e) {
-            typeList = null;
-        }
-        return typeList;
-    }
-
 
     /**
      * get file list from @file

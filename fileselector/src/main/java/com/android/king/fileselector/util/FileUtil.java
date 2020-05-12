@@ -5,8 +5,8 @@ import android.text.TextUtils;
 import java.text.DecimalFormat;
 
 /***
- * 名称：
- * 描述：
+ * 名称：FileUtil
+ * 描述：文件工具类
  * 最近修改时间：2018年09月21日 10:32分
  * @since 2018-09-21
  * @author king

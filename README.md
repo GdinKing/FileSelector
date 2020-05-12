@@ -13,7 +13,7 @@ AppCompat版本：
 ```
 AndroidX版本：
 ```groovy
- implementation 'com.king.ui:fileselector:1.0.2'
+ implementation 'com.king.ui:fileselector:1.0.3'
 ```
 
 ## 特点
@@ -22,10 +22,13 @@ AndroidX版本：
 - 适配6.0权限申请
 - 支持传入初始文件夹路径
 - 支持筛选文件类型
+- 兼容AndroidX
 
 ## 用法：
 
 ### 1.通过Intent打开文件选择器
+
+version 1.0.1：
 
 ```java
   Intent intent = new Intent(this, FileSelectorActivity.class);
@@ -35,6 +38,24 @@ AndroidX版本：
   intent.putExtra(FileSelectorActivity.ACTIVITY_KEY_FILE_TYPE, ""); //筛选文件类型，数组字符串形式，例如["video","image","doc"]或[FileSelectorActivity.FILE_TYPE_IMAGE,FileSelectorActivity.FILE_TYPE_VIDEO]
 //intent.putExtra(FileSelectorActivity.ACTIVITY_KEY_FILE_TYPE, FileSelectorActivity.FILE_TYPE_IMAGE);//只展示图片
   startActivityForResult(intent, 100);
+```
+version 1.0.3：
+
+```java
+    //文件类型筛选
+   ArrayList<String> filters = new ArrayList<String>();
+   filters.add(FileSelectorActivity.FILE_TYPE_IMAGE);//图片
+   filters.add(FileSelectorActivity.FILE_TYPE_VIDEO);//视频
+   filters.add(FileSelectorActivity.FILE_TYPE_DOC);//文档
+   filters.add(FileSelectorActivity.FILE_TYPE_AUDIO);//音频
+
+   FileSelector.Builder builder = new FileSelector.Builder(this);
+   Intent intent = builder.setFileRoot("")//初始路径  init file root
+               .setIsMultiple(true)//是否多选模式 whether is multiple select
+               .setMaxCount(3)//限定文件选择数 max file count
+               .setFilters(filters)//筛选文件类型  file filter
+               .getIntent();
+   startActivityForResult(intent, 100);
 ```
 
 ### 2.在onActivityResult获取结果
