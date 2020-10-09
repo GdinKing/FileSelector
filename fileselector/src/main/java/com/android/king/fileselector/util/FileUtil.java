@@ -124,10 +124,10 @@ public class FileUtil {
         String fileName = name.toLowerCase();
         for (int i = 0; i < DOC_TYPES.length; i++) {
             if (fileName.endsWith(DOC_TYPES[i])) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
 
